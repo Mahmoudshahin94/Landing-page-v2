@@ -60,22 +60,44 @@
   .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
 
   /* ===== TOP NAV ===== */
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:80;height:74px;
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:80;height:104px;
     display:flex;align-items:center;background:linear-gradient(#000000ee,#00000000);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1360px;margin:0 auto;padding:0 30px}
-  .logo{display:flex;align-items:center;gap:8px}
-  .logo img{height:34px;width:auto}
-  .nav-mid{display:flex;gap:26px;font-size:15px;color:#e9e6e3}
-  .nav-mid a{display:flex;align-items:center;gap:7px}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:none;margin:0;padding:0 48px}
+  .nav-left{display:flex;align-items:center;gap:26px}
+  .logo{display:flex;align-items:center;gap:8px;transition:transform .25s ease}
+  .logo:hover{transform:scale(1.04)}
+  .logo img{height:48px;width:auto}
+  .nav-mid{display:flex;gap:38px;font-size:18px;color:#e9e6e3}
+  .nav-mid a{display:flex;align-items:center;gap:8px;font-weight:600;transition:color .25s ease,transform .25s ease}
   .nav-mid a::before{content:"·";color:var(--orange);font-weight:900}
-  .nav-mid a:hover{color:var(--orange)}
-  .nav-right{display:flex;align-items:center;gap:18px}
-  .nav-right .cc{font-size:14px;color:var(--orange);font-weight:600}
-  .order-pill{display:flex;align-items:center;gap:9px;background:#1c1c1c;border:1px solid #ffffff1f;
-    padding:8px 8px 8px 18px;border-radius:100px;font-weight:600;font-size:14px}
-  .order-pill .dot{width:26px;height:26px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-size:12px}
-  .burger{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;margin-right:8px}
-  .burger span{width:24px;height:2px;background:#fff;display:block}
+  .nav-mid a:hover{color:var(--orange);transform:translateY(-2px)}
+  .nav-right{display:flex;align-items:center;gap:24px}
+  .nav-right .cc{font-size:17px;color:var(--orange);font-weight:700;transition:opacity .25s ease}
+  .nav-right .cc:hover{opacity:.7}
+  .order-pill{display:flex;align-items:center;gap:12px;background:#1c1c1c;border:1px solid #ffffff1f;
+    padding:11px 22px 11px 11px;border-radius:100px;font-weight:700;font-size:17px;
+    transition:transform .22s ease,background .22s ease,border-color .22s ease}
+  .order-pill:hover{transform:translateY(-3px);background:#262626;border-color:var(--orange)}
+  .order-pill .dot{width:34px;height:34px;border-radius:50%;background:var(--orange);display:grid;place-items:center;
+    font-size:15px;color:#fff;transition:transform .22s ease}
+  .order-pill:hover .dot{transform:rotate(45deg)}
+  .burger{display:flex;flex-direction:column;gap:8px;background:none;border:none;cursor:pointer;padding:6px 0}
+  .burger span{width:46px;height:2px;background:#fff;display:block;transition:width .25s ease,background .25s ease}
+  .burger span:nth-child(2){width:38px}
+  .burger:hover span{background:var(--orange)}
+  .burger:hover span:nth-child(2){width:46px}
+
+  /* header entrance animation */
+  @keyframes navIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+  .nav-anim{opacity:0;animation:navIn .6s cubic-bezier(.2,.7,.2,1) forwards}
+  .logo.nav-anim{animation-delay:.05s}
+  .burger.nav-anim{animation-delay:.15s}
+  .nav-mid a.nav-anim:nth-child(1){animation-delay:.24s}
+  .nav-mid a.nav-anim:nth-child(2){animation-delay:.31s}
+  .nav-mid a.nav-anim:nth-child(3){animation-delay:.38s}
+  .nav-mid a.nav-anim:nth-child(4){animation-delay:.45s}
+  .cc.nav-anim{animation-delay:.52s}
+  .order-pill.nav-anim{animation-delay:.6s}
 
   /* ===== RIGHT SCROLL NAV ===== */
   .dotnav{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:70;display:flex;flex-direction:column;gap:9px;text-align:right}
@@ -91,8 +113,8 @@
   /* ===== HERO (Fresh) ===== */
   #fresh{align-items:center;text-align:center;overflow:hidden}
   #fresh .grid-bg{opacity:.5}
-  .hero-eyebrow{justify-content:center;margin-bottom:18px}
-  .hero h1{font-size:clamp(40px,7vw,86px);font-weight:800;max-width:14ch;margin:0 auto;position:relative;z-index:3}
+  .hero-eyebrow{justify-content:center;margin-bottom:20px;font-size:15px;font-weight:500;letter-spacing:.02em;color:#e9e6e3}
+  .hero h1{font-family:"Satoshi",-apple-system,BlinkMacSystemFont,sans-serif;font-size:clamp(42px,6.6vw,98px);font-weight:800;letter-spacing:-.035em;line-height:1.0;max-width:14ch;margin:0 auto;position:relative;z-index:3}
   .hero-salad{position:relative;z-index:2;margin-top:-26px;width:min(760px,92vw)}
   .hero-salad img{width:100%;height:auto;display:block}
   .hero-salad #saladB{position:absolute;inset:0;z-index:0}
@@ -101,9 +123,14 @@
   .hero-corner.left{left:40px;text-align:left;max-width:300px}
   .hero-tags{display:flex;gap:8px;margin-bottom:18px}
   .hero-tags span{font-size:12px;font-weight:600;padding:7px 15px;border-radius:100px;background:#ffffff0d;border:1px solid #ffffff1f}
-  .hero-corner.left h4{font-size:21px;font-weight:800}
+  .hero-corner.left h4{font-size:22px;font-weight:800;letter-spacing:-.01em}
   .hero-corner.left p{font-size:13px;color:var(--muted);margin-top:6px}
-  .hero-corner.right{right:40px;bottom:42px}
+  .hero-corner.right{right:48px;bottom:96px}
+  .contact-cta{display:inline-flex;align-items:center;gap:12px;padding:16px 16px 16px 28px;border-radius:100px;
+    font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em;color:#fff;
+    background:var(--orange);box-shadow:0 14px 34px #f4783e44;transition:transform .18s,background .18s,box-shadow .18s}
+  .contact-cta:hover{transform:translateY(-3px);background:var(--orange-dark);box-shadow:0 18px 40px #f4783e66}
+  .contact-cta .ic{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#ffffff26;font-size:16px}
 
   /* ===== CITY SECTIONS (Source + Trusted) ===== */
   .city{position:absolute;inset:0;overflow:hidden;z-index:0;
@@ -306,14 +333,16 @@
 <!-- ===== TOP NAV ===== -->
 <header class="nav">
   <div class="nav-inner">
-    <a class="logo" href="#fresh"><img src="assets/images/EATnaked.png" alt="EATnaked" /></a>
+    <div class="nav-left">
+      <a class="logo nav-anim" href="#fresh"><img src="assets/images/EATnaked.png" alt="EATnaked" /></a>
+      <button class="burger nav-anim" aria-label="Menu"><span></span><span></span></button>
+    </div>
     <nav class="nav-mid">
-      <a href="#ourfamily">About</a><a href="#table">FAQs</a><a href="#table">Community</a><a href="#footer">Contact</a>
+      <a class="nav-anim" href="#ourfamily">About</a><a class="nav-anim" href="#table">FAQs</a><a class="nav-anim" href="#table">Community</a><a class="nav-anim" href="#footer">Contact</a>
     </nav>
     <div class="nav-right">
-      <span class="cc">Current Customer?</span>
-      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-      <a class="order-pill" href="#table">Order Now <span class="dot">→</span></a>
+      <span class="cc nav-anim">Current Customer?</span>
+      <a class="order-pill nav-anim" href="#table"><span class="dot">→</span> Order Now</a>
     </div>
   </div>
 </header>
@@ -343,7 +372,7 @@
     <h4>From Our Kitchen<br/>to Your Door</h4>
     <p>Healthy eating made effortless. Fuel your body and free your time.</p>
   </div>
-  <div class="hero-corner right"><a class="btn btn--primary" href="#footer">↗ Contact Us</a></div>
+  <div class="hero-corner right"><a class="contact-cta" href="#footer">Contact Us <span class="ic">↗</span></a></div>
 </section>
 
 <!-- ===== SOURCE ===== -->
@@ -533,6 +562,11 @@
 <script>
 (function(){
   "use strict";
+
+  /* ---------- Header entrance: drop the anim class once it finishes so hover transitions work ---------- */
+  Array.prototype.slice.call(document.querySelectorAll('.nav-anim')).forEach(function(el){
+    el.addEventListener('animationend', function(){ el.classList.remove('nav-anim'); });
+  });
 
   /* ---------- Hero salad: full clip, forward-only, crossfade-looped ----------
      The complete recorded sequence plays forward (closed -> burst -> spin -> burst
