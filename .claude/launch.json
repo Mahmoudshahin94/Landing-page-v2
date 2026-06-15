@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "clone-preview",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["/Users/mahmoudshahin/Desktop/Projects-Template/Landing Page V2/clone/server.js"],
+      "port": 8077
+    }
+  ]
+}

@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude local settings
+.claude/settings.local.json
+
+# scratch / large local artifacts (reference recordings, screenshots)
+*.mov
+Screenshot*.png
