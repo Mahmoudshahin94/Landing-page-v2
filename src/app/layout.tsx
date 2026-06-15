@@ -9,11 +9,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "EatFresh — Fresh Meals, Delivered Daily",
-  description: "Healthy meal prep delivered to your door. Chef-crafted, macro-balanced meals for every lifestyle — muscle gain, maintenance, or weight loss.",
-  keywords: ["meal prep", "healthy food delivery", "fresh meals", "nutrition", "chef prepared"],
+  title: "EATnaked — It's a Lifestyle",
+  description: "EAT local, EAT healthy, EATnaked. Homemade meals, delivered daily — fresh, never frozen. Chef-crafted, macro-balanced meals for every lifestyle.",
+  keywords: ["meal prep", "healthy food delivery", "fresh meals", "nutrition", "chef prepared", "eatnaked"],
   openGraph: {
-    title: "EatFresh — Fresh Meals, Delivered Daily",
+    title: "EATnaked — It's a Lifestyle",
     description: "Real food, real ingredients, real results. Fuel your lifestyle with chef-crafted meals delivered fresh daily.",
     type: "website",
   },
