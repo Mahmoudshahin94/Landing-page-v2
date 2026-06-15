@@ -334,7 +334,7 @@
   <div class="hero">
     <span class="eyebrow hero-eyebrow reveal in">It's a Lifestyle <span class="leaf">🌱</span></span>
     <h1 class="reveal in">EAT Local, EAT Healthy, EATnaked.</h1>
-    <div class="hero-salad reveal in"><img id="salad" src="assets/frames/h_001.png" alt="Rotating salad bowl" /></div>
+    <div class="hero-salad reveal in"><img id="salad" src="assets/frames/h_000.jpg?v=3" alt="Rotating salad bowl" /></div>
   </div>
   <div class="hero-corner left">
     <div class="hero-tags"><span>Bold</span><span>Fresh</span><span>Tailored</span></div>
@@ -535,9 +535,9 @@
   /* ---------- Hero salad ping-pong frame loop ---------- */
   var salad = document.getElementById('salad');
   var FRAMES = [];
-  for (var i=1;i<=19;i++){ FRAMES.push('assets/frames/h_'+String(i).padStart(3,'0')+'.png'); }
+  for (var i=0;i<=19;i++){ FRAMES.push('assets/frames/h_'+String(i).padStart(3,'0')+'.jpg?v=3'); }
   var imgs = FRAMES.map(function(src){ var im=new Image(); im.src=src; return im; });
-  var fi=0, dir=1, last=0, FPS=11;
+  var fi=0, dir=1, last=0, FPS=8;
   function animate(ts){
     if (ts-last > 1000/FPS){
       last=ts;
