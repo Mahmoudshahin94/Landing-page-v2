@@ -60,22 +60,44 @@
   .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
 
   /* ===== TOP NAV ===== */
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:80;height:74px;
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:80;height:104px;
     display:flex;align-items:center;background:linear-gradient(#000000ee,#00000000);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1360px;margin:0 auto;padding:0 30px}
-  .logo{display:flex;align-items:center;gap:8px}
-  .logo img{height:34px;width:auto}
-  .nav-mid{display:flex;gap:26px;font-size:15px;color:#e9e6e3}
-  .nav-mid a{display:flex;align-items:center;gap:7px}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:none;margin:0;padding:0 48px}
+  .nav-left{display:flex;align-items:center;gap:26px}
+  .logo{display:flex;align-items:center;gap:8px;transition:transform .25s ease}
+  .logo:hover{transform:scale(1.04)}
+  .logo img{height:48px;width:auto}
+  .nav-mid{display:flex;gap:38px;font-size:18px;color:#e9e6e3}
+  .nav-mid a{display:flex;align-items:center;gap:8px;font-weight:600;transition:color .25s ease,transform .25s ease}
   .nav-mid a::before{content:"·";color:var(--orange);font-weight:900}
-  .nav-mid a:hover{color:var(--orange)}
-  .nav-right{display:flex;align-items:center;gap:18px}
-  .nav-right .cc{font-size:14px;color:var(--orange);font-weight:600}
-  .order-pill{display:flex;align-items:center;gap:9px;background:#1c1c1c;border:1px solid #ffffff1f;
-    padding:8px 8px 8px 18px;border-radius:100px;font-weight:600;font-size:14px}
-  .order-pill .dot{width:26px;height:26px;border-radius:50%;background:var(--orange);display:grid;place-items:center;font-size:12px}
-  .burger{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;margin-right:8px}
-  .burger span{width:24px;height:2px;background:#fff;display:block}
+  .nav-mid a:hover{color:var(--orange);transform:translateY(-2px)}
+  .nav-right{display:flex;align-items:center;gap:24px}
+  .nav-right .cc{font-size:17px;color:var(--orange);font-weight:700;transition:opacity .25s ease}
+  .nav-right .cc:hover{opacity:.7}
+  .order-pill{display:flex;align-items:center;gap:12px;background:#1c1c1c;border:1px solid #ffffff1f;
+    padding:11px 22px 11px 11px;border-radius:100px;font-weight:700;font-size:17px;
+    transition:transform .22s ease,background .22s ease,border-color .22s ease}
+  .order-pill:hover{transform:translateY(-3px);background:#262626;border-color:var(--orange)}
+  .order-pill .dot{width:34px;height:34px;border-radius:50%;background:var(--orange);display:grid;place-items:center;
+    font-size:15px;color:#fff;transition:transform .22s ease}
+  .order-pill:hover .dot{transform:rotate(45deg)}
+  .burger{display:flex;flex-direction:column;gap:8px;background:none;border:none;cursor:pointer;padding:6px 0}
+  .burger span{width:46px;height:2px;background:#fff;display:block;transition:width .25s ease,background .25s ease}
+  .burger span:nth-child(2){width:38px}
+  .burger:hover span{background:var(--orange)}
+  .burger:hover span:nth-child(2){width:46px}
+
+  /* header entrance animation */
+  @keyframes navIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+  .nav-anim{opacity:0;animation:navIn .6s cubic-bezier(.2,.7,.2,1) forwards}
+  .logo.nav-anim{animation-delay:.05s}
+  .burger.nav-anim{animation-delay:.15s}
+  .nav-mid a.nav-anim:nth-child(1){animation-delay:.24s}
+  .nav-mid a.nav-anim:nth-child(2){animation-delay:.31s}
+  .nav-mid a.nav-anim:nth-child(3){animation-delay:.38s}
+  .nav-mid a.nav-anim:nth-child(4){animation-delay:.45s}
+  .cc.nav-anim{animation-delay:.52s}
+  .order-pill.nav-anim{animation-delay:.6s}
 
   /* ===== RIGHT SCROLL NAV ===== */
   .dotnav{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:70;display:flex;flex-direction:column;gap:9px;text-align:right}
@@ -91,17 +113,26 @@
   /* ===== HERO (Fresh) ===== */
   #fresh{align-items:center;text-align:center;overflow:hidden}
   #fresh .grid-bg{opacity:.5}
-  .hero-eyebrow{justify-content:center;margin-bottom:18px}
-  .hero h1{font-size:clamp(40px,7vw,86px);font-weight:800;max-width:14ch;margin:0 auto;position:relative;z-index:3}
-  .hero-salad{position:relative;z-index:2;margin-top:-26px;width:min(760px,92vw)}
-  .hero-salad img{width:100%;height:auto;filter:drop-shadow(0 40px 60px rgba(0,0,0,.6))}
+  .hero-eyebrow{justify-content:center;margin-bottom:20px;font-size:15px;font-weight:500;letter-spacing:.02em;color:#e9e6e3}
+  .hero h1{font-family:"Satoshi",-apple-system,BlinkMacSystemFont,sans-serif;font-size:clamp(42px,6.6vw,98px);font-weight:800;letter-spacing:-.035em;line-height:1.0;max-width:14ch;margin:0 auto;position:relative;z-index:3}
+  .hero-salad{position:relative;z-index:2;margin: -26px auto 0;width:min(760px,92vw)}
+  .hero-salad.reveal{transform:translateY(34px) translateX(clamp(10px,1.25vw,16px))}
+  .hero-salad.reveal.in{transform:translateX(clamp(10px,1.25vw,16px))}
+  .hero-salad img{width:100%;height:auto;display:block}
+  .hero-salad #saladB{position:absolute;inset:0;z-index:0}
+  .hero-salad #salad{position:relative;z-index:1;will-change:opacity}
   .hero-corner{position:absolute;bottom:42px;z-index:4}
   .hero-corner.left{left:40px;text-align:left;max-width:300px}
   .hero-tags{display:flex;gap:8px;margin-bottom:18px}
   .hero-tags span{font-size:12px;font-weight:600;padding:7px 15px;border-radius:100px;background:#ffffff0d;border:1px solid #ffffff1f}
-  .hero-corner.left h4{font-size:21px;font-weight:800}
+  .hero-corner.left h4{font-size:22px;font-weight:800;letter-spacing:-.01em}
   .hero-corner.left p{font-size:13px;color:var(--muted);margin-top:6px}
-  .hero-corner.right{right:40px;bottom:42px}
+  .hero-corner.right{right:48px;bottom:96px}
+  .contact-cta{display:inline-flex;align-items:center;gap:12px;padding:16px 16px 16px 28px;border-radius:100px;
+    font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em;color:#fff;
+    background:var(--orange);box-shadow:0 14px 34px #f4783e44;transition:transform .18s,background .18s,box-shadow .18s}
+  .contact-cta:hover{transform:translateY(-3px);background:var(--orange-dark);box-shadow:0 18px 40px #f4783e66}
+  .contact-cta .ic{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#ffffff26;font-size:16px}
 
   /* ===== CITY SECTIONS (Source + Trusted) ===== */
   .city{position:absolute;inset:0;overflow:hidden;z-index:0;
@@ -209,13 +240,27 @@
   #ingredients{align-items:center;text-align:center;overflow:hidden}
   .ing-head{position:relative;z-index:3}
   .ing-stage{position:relative;z-index:3;width:min(900px,94vw);height:480px;margin:10px auto 0}
+  .ing-layer{position:absolute;inset:0;pointer-events:none}
+  /* title + chips crossfade in place; only the bowl slides */
+  .ing-layer .ing-title,.ing-layer .ing-chips{opacity:0;transition:opacity .5s ease}
+  .ing-layer.show .ing-title,.ing-layer.show .ing-chips{opacity:1}
+  .ing-chips{position:absolute;inset:0}
   .ing-title{position:absolute;top:0;left:0;right:0;font-size:clamp(26px,3.4vw,40px);font-weight:800}
-  .ing-bowl{position:absolute;left:50%;top:120px;transform:translateX(-50%);width:380px;height:300px}
-  .ing-bowl img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 30px 50px #000)}
+  /* the bowl is the large sliding "switcher"; its bottom quarter fades into black */
+  .ing-bowl{position:absolute;left:50%;top:120px;width:560px;height:440px;margin-left:-280px;max-width:94%;
+    opacity:0;transform:translateX(0) scale(.86);
+    transition:transform .62s cubic-bezier(.22,.61,.36,1),opacity .5s ease}
+  .ing-bowl img{width:100%;height:100%;object-fit:contain;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 66%,transparent 90%);
+    mask-image:linear-gradient(to bottom,#000 0%,#000 66%,transparent 90%)}
+  .ing-layer.show .ing-bowl{opacity:1;transform:translateX(0) scale(1)}
+  .ing-layer.enter-left .ing-bowl,.ing-layer.exit-left .ing-bowl{transform:translateX(-180px) scale(.8);opacity:0}
+  .ing-layer.enter-right .ing-bowl,.ing-layer.exit-right .ing-bowl{transform:translateX(180px) scale(.8);opacity:0}
   .chip{position:absolute;display:flex;align-items:center;gap:9px;background:var(--glass);backdrop-filter:blur(8px);
     border:1px solid #ffffff16;border-radius:12px;padding:8px 14px 8px 8px;font-size:13px;font-weight:600;z-index:4}
   .chip img{width:30px;height:30px;border-radius:7px;object-fit:cover}
-  .ing-arrows{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-between;padding:0 4px}
+  @media (prefers-reduced-motion: reduce){ .ing-bowl,.ing-layer .ing-title,.ing-layer .ing-chips{transition-duration:.01s} }
+  .ing-arrows{position:absolute;bottom:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;padding:0 4px}
   .ing-arrows button{width:46px;height:46px;border-radius:50%;background:#ffffff10;border:1px solid #ffffff22;color:#fff;cursor:pointer;font-size:18px}
   .ing-arrows button:hover{border-color:var(--orange);color:var(--orange)}
 
@@ -304,14 +349,16 @@
 <!-- ===== TOP NAV ===== -->
 <header class="nav">
   <div class="nav-inner">
-    <a class="logo" href="#fresh"><img src="assets/images/EATnaked.png" alt="EATnaked" /></a>
+    <div class="nav-left">
+      <a class="logo nav-anim" href="#fresh"><img src="assets/images/EATnaked.png" alt="EATnaked" /></a>
+      <button class="burger nav-anim" aria-label="Menu"><span></span><span></span></button>
+    </div>
     <nav class="nav-mid">
-      <a href="#ourfamily">About</a><a href="#table">FAQs</a><a href="#table">Community</a><a href="#footer">Contact</a>
+      <a class="nav-anim" href="#ourfamily">About</a><a class="nav-anim" href="#table">FAQs</a><a class="nav-anim" href="#table">Community</a><a class="nav-anim" href="#footer">Contact</a>
     </nav>
     <div class="nav-right">
-      <span class="cc">Current Customer?</span>
-      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-      <a class="order-pill" href="#table">Order Now <span class="dot">→</span></a>
+      <span class="cc nav-anim">Current Customer?</span>
+      <a class="order-pill nav-anim" href="#table"><span class="dot">→</span> Order Now</a>
     </div>
   </div>
 </header>
@@ -334,14 +381,14 @@
   <div class="hero">
     <span class="eyebrow hero-eyebrow reveal in">It's a Lifestyle <span class="leaf">🌱</span></span>
     <h1 class="reveal in">EAT Local, EAT Healthy, EATnaked.</h1>
-    <div class="hero-salad reveal in"><img id="salad" src="assets/frames/h_000.jpg?v=3" alt="Rotating salad bowl" /></div>
+    <div class="hero-salad reveal in"><img id="saladB" src="assets/frames/h_000.jpg?v=6" alt="" aria-hidden="true" /><img id="salad" src="assets/frames/h_000.jpg?v=6" alt="Salad bowl bursting open" /></div>
   </div>
   <div class="hero-corner left">
     <div class="hero-tags"><span>Bold</span><span>Fresh</span><span>Tailored</span></div>
     <h4>From Our Kitchen<br/>to Your Door</h4>
     <p>Healthy eating made effortless. Fuel your body and free your time.</p>
   </div>
-  <div class="hero-corner right"><a class="btn btn--primary" href="#footer">↗ Contact Us</a></div>
+  <div class="hero-corner right"><a class="contact-cta" href="#footer">Contact Us <span class="ic">↗</span></a></div>
 </section>
 
 <!-- ===== SOURCE ===== -->
@@ -459,9 +506,8 @@
   <div class="grid-bg" style="opacity:.3"></div>
   <div class="ing-head"><span class="eyebrow reveal">Bowl Builder</span></div>
   <div class="ing-stage">
-    <div class="ing-title" id="ingTitle">Lemon Herb Garlic Chicken w/ Organic Quinoa &amp; Grilled Asparagus</div>
-    <div class="ing-bowl"><img id="ingBowl" src="assets/images/bowl-1.avif" alt="Bowl" /></div>
-    <div id="ingChips"></div>
+    <div class="ing-layer" id="ingLayerA"></div>
+    <div class="ing-layer" id="ingLayerB"></div>
     <div class="ing-arrows"><button id="ingPrev">←</button><button id="ingNext">→</button></div>
   </div>
 </section>
@@ -532,19 +578,32 @@
 (function(){
   "use strict";
 
-  /* ---------- Hero salad ping-pong frame loop ---------- */
-  var salad = document.getElementById('salad');
+  /* ---------- Header entrance: drop the anim class once it finishes so hover transitions work ---------- */
+  Array.prototype.slice.call(document.querySelectorAll('.nav-anim')).forEach(function(el){
+    el.addEventListener('animationend', function(){ el.classList.remove('nav-anim'); });
+  });
+
+  /* ---------- Hero salad: full clip, forward-only, crossfade-looped ----------
+     The complete recorded sequence plays forward (closed -> burst -> spin -> burst
+     -> settle back to closed-front). Start and end are the same closed-front frame,
+     and the last FADE frames dissolve into the start frame (#saladB), so the whole
+     video loops seamlessly — no reverse, and no burst lands on the seam. */
+  var salad  = document.getElementById('salad');
+  var saladB = document.getElementById('saladB');
+  var N = 90, FPS = 15, FADE = 8, V = 'v=6';
   var FRAMES = [];
-  for (var i=0;i<=19;i++){ FRAMES.push('assets/frames/h_'+String(i).padStart(3,'0')+'.jpg?v=3'); }
+  for (var i=0;i<N;i++){ FRAMES.push('assets/frames/h_'+String(i).padStart(3,'0')+'.jpg?'+V); }
   var imgs = FRAMES.map(function(src){ var im=new Image(); im.src=src; return im; });
-  var fi=0, dir=1, last=0, FPS=8;
+  saladB.src = FRAMES[0];                       // bottom layer always holds the start frame
+  var fi=0, last=0;
   function animate(ts){
     if (ts-last > 1000/FPS){
       last=ts;
-      fi+=dir;
-      if (fi>=FRAMES.length-1){ fi=FRAMES.length-1; dir=-1; }
-      else if (fi<=0){ fi=0; dir=1; }
-      if (imgs[fi].complete) salad.src=FRAMES[fi];
+      fi++;
+      if (fi>=N){ fi=0; }
+      if (imgs[fi] && imgs[fi].complete) salad.src=FRAMES[fi];
+      var fromEnd = N-1-fi;                      // crossfade tail -> start frame
+      salad.style.opacity = (fromEnd < FADE) ? (fromEnd/FADE).toFixed(3) : '1';
     }
     requestAnimationFrame(animate);
   }
@@ -657,26 +716,52 @@
   document.getElementById('cfNext').addEventListener('click',function(){ cfIdx=(cfIdx+1)%cfCards.length; layoutCF(); });
   cfCards.forEach(function(c){ c.addEventListener('click',function(){ var i=+c.getAttribute('data-i'); if(i!==cfIdx){ cfIdx=i; layoutCF(); } }); });
 
-  /* ---------- Ingredients carousel ---------- */
+  /* ---------- Ingredients carousel (dual-layer crossfade) ---------- */
+  /* Six fixed chip slots: 3 left (top→bottom), 3 right (top→bottom). */
   var bowls=[
     {title:'Lemon Herb Garlic Chicken w/ Organic Quinoa &amp; Grilled Asparagus', img:'assets/images/bowl-1.avif',
      chips:[['assets/images/bowl-grains.png','Veggies',8,18],['assets/images/bowl-proteins.png','Protein',2,44],['assets/images/bowl-herbs.png','Grains',8,70],
-            ['assets/images/bowl-asparagus.png','Asparagus',72,16],['assets/images/bowl-sauce.png','Chicken',80,52]]},
+            ['assets/images/bowl-fruit.png','Fruit',72,16],['assets/images/bowl-herbs.png','Herbs',80,44],['assets/images/bowl-sauce.png','Sauce',76,70]]},
     {title:'Southwest Bean &amp; Quinoa Salad', img:'assets/images/bowl-2.avif',
-     chips:[['assets/images/bowl-grains.png','Veggies',6,16],['assets/images/bowl-fruit.png','Fruit',2,42],['assets/images/bowl-couscous.png','CousCous',8,68],
-            ['assets/images/bowl-herbs.png','Herbs',74,14],['assets/images/bowl-sauce.png','Sauce',80,44],['assets/images/bowl-olives.png','Olives',76,70]]}
+     chips:[['assets/images/bowl-asparagus.png','Asparagus',8,18],['assets/images/bowl-sauce.png','Chicken',2,44],['assets/images/bowl-grains.png','Veggies',8,70],
+            ['assets/images/bowl-herbs.png','Herbs',72,16],['assets/images/bowl-couscous.png','CousCous',80,44],['assets/images/bowl-olives.png','Olives',76,70]]}
   ];
-  var ingIdx=0, ingTitle=document.getElementById('ingTitle'), ingBowl=document.getElementById('ingBowl'), ingChips=document.getElementById('ingChips');
-  function renderIng(){
-    var b=bowls[ingIdx];
-    ingTitle.innerHTML=b.title; ingBowl.src=b.img;
-    ingChips.innerHTML=b.chips.map(function(c){
-      return '<div class="chip" style="left:'+c[2]+'%;top:'+c[3]+'%"><img src="'+c[0]+'" alt="">'+c[1]+'</div>';
-    }).join('');
+  var ingIdx=0, isAnimating=false;
+  var ingLayers=[document.getElementById('ingLayerA'), document.getElementById('ingLayerB')];
+  var ingActive=0;
+  function buildScene(layer,b){
+    layer.innerHTML='<div class="ing-title">'+b.title+'</div>'
+      +'<div class="ing-bowl"><img src="'+b.img+'" alt="Bowl" /></div>'
+      +'<div class="ing-chips">'+b.chips.map(function(c){
+        return '<div class="chip" style="left:'+c[2]+'%;top:'+c[3]+'%"><img src="'+c[0]+'" alt="">'+c[1]+'</div>';
+      }).join('')+'</div>';
   }
-  renderIng();
-  document.getElementById('ingPrev').addEventListener('click',function(){ ingIdx=(ingIdx-1+bowls.length)%bowls.length; renderIng(); });
-  document.getElementById('ingNext').addEventListener('click',function(){ ingIdx=(ingIdx+1)%bowls.length; renderIng(); });
+  function setSlide(layer,cls){
+    layer.classList.remove('enter-left','enter-right','exit-left','exit-right');
+    if(cls) layer.classList.add(cls);
+  }
+  /* dir>0 = Next: incoming slides in from the LEFT, outgoing exits to the RIGHT.
+     dir<0 = Prev: opposite direction. Cyclic. */
+  function goIng(dir){
+    if(isAnimating) return;
+    isAnimating=true;
+    ingIdx=(ingIdx+dir+bowls.length)%bowls.length;
+    var incoming=ingLayers[1-ingActive], outgoing=ingLayers[ingActive];
+    buildScene(incoming,bowls[ingIdx]);
+    incoming.classList.remove('show');
+    setSlide(incoming, dir>0?'enter-left':'enter-right'); /* park off-screen */
+    void incoming.offsetWidth;                            /* reflow before animating */
+    setSlide(incoming, null);
+    incoming.classList.add('show');                       /* slide to center + scale up + fade in */
+    outgoing.classList.remove('show');
+    setSlide(outgoing, dir>0?'exit-right':'exit-left');   /* slide out the opposite side */
+    ingActive=1-ingActive;
+    setTimeout(function(){ isAnimating=false; }, 660);
+  }
+  buildScene(ingLayers[0],bowls[0]);
+  ingLayers[0].classList.add('show');
+  document.getElementById('ingPrev').addEventListener('click',function(){ goIng(-1); });
+  document.getElementById('ingNext').addEventListener('click',function(){ goIng(1); });
 
   /* ---------- Testimonials drag-to-scroll ---------- */
   var tk=document.getElementById('testiTrack'), down=false, sx=0, sl=0;
